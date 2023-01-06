@@ -38,62 +38,11 @@ public class DBConn {
             System.err.println(ex);
 
         } catch (ClassNotFoundException e) {
-            System.err.println("ClassNotFoundExceptino encoutnered while connecting to database");
+            System.err.println("ClassNotFoundException encountered while connecting to database");
             System.err.println(e);
         }
     }
 
-    public static int createNextUser() {
-        if (!initialized) {
-            return -1;
-        }
-        try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO users() VALUES ()",
-                    Statement.RETURN_GENERATED_KEYS);
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                return -1;
-            }
-            ResultSet res = stmt.getGeneratedKeys();
-            if (res.next()) {
-                System.out.println("IT DIDNT FAIL");
-                System.out.println("got id " + res.getInt(1));
-                return res.getInt(1);
-            }
-            return -1;
 
-        } catch (SQLException e) {
-            System.out.println("failed");
-            return -1;
-        }
-
-    }
-
-    public static void createNextWebsiteVisit(int UUID, String location) {
-        if (!initialized) {
-            return;
-        }
-        try {
-            PreparedStatement stmt = conn
-                    .prepareStatement("INSERT INTO nextWebsite_visits(user, location, visitedAt) VALUES (?, ?, ?)");
-            stmt.setInt(1, UUID);
-            stmt.setString(2, location);
-            stmt.setString(3, (new Timestamp(System.currentTimeMillis())).toString());
-
-	    System.out.println(stmt);
-
-            if (stmt.executeUpdate() > 0) {
-                System.out.println("succeeded");
-            } else {
-                System.out.println("failed");
-            }
-
-            return;
-
-        } catch (SQLException e) {
-            System.out.println("failed");
-            return;
-        }
-    }
 
 }

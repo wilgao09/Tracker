@@ -1,6 +1,6 @@
-package com.mytracker.tracker;
+package com.mytracker.tracker.NextWebsite;
 
-public class NextWebsiteBody {
+public class VisitBody {
     private String location;
 
     // public NextWebsiteBody(String location) {
