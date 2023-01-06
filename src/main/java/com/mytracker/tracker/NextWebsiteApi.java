@@ -10,7 +10,7 @@ import com.mytracker.tracker.NextWebsite.ApiAggResponse;
 public class NextWebsiteApi {
 
     // TODO: this
-    @CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "https://tracker-dashboard.vercel.app", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping("/nextWebsite/data/agg")
     public ApiAggResponse getAggregateData() {
         return NextWebsiteDB.getAggregateData();
