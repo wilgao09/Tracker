@@ -29,10 +29,9 @@ public class DBConn {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/tracker",
-                    System.getenv("dbuname"), System.getenv("dbpwd"));
+                    "jdbc:mysql://localhost:3306/tracker?useSSL=false&serverRsaPublicKeyFile=/var/lib/mysql/public_key.pem", "tracker", "toor" );
             initialized = true;
         } catch (SQLException ex) {
             System.err.println("SQLException encountered while connecting to database");
@@ -80,6 +79,9 @@ public class DBConn {
             stmt.setInt(1, UUID);
             stmt.setString(2, location);
             stmt.setString(3, (new Timestamp(System.currentTimeMillis())).toString());
+
+	    System.out.println(stmt);
+
             if (stmt.executeUpdate() > 0) {
                 System.out.println("succeeded");
             } else {

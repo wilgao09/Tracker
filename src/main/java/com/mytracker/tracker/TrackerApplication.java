@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+
 @SpringBootApplication
 public class TrackerApplication {
 
@@ -18,6 +19,7 @@ public class TrackerApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
+			System.out.println("???????? HELLO RUNNING A THING ?? ? ?? ? ? ?? ? ");
 			DBConn.connect();
 
 		};
