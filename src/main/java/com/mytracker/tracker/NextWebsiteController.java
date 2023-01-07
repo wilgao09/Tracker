@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 public class NextWebsiteController {
     private final String remoteHost = "https://next-website-wilgao09.vercel.app";
-    private final String localhost = "http://localhost:3000";
 
     // @CrossOrigin(origins="https://next-website-wilgao09.vercel.app")
     @CrossOrigin(origins = remoteHost, allowedHeaders = "*", allowCredentials = "true")
