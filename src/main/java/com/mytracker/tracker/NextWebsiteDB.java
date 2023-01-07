@@ -118,7 +118,7 @@ public class NextWebsiteDB {
             ArrayList<String[]> res = new ArrayList<String[]>();
 
             while (r.next()) {
-                res.add(new String[] { Integer.toString(r.getInt(1)), r.getTimestamp(2).toString() });
+                res.add(new String[] { Integer.toString(r.getInt(1)), r.getString(2) });
             }
             return res.toArray(new String[res.size()][2]);
         } catch (SQLException e) {

@@ -20,7 +20,7 @@ public class NextWebsiteApi {
     @GetMapping("/nextWebsite/data/usersList/{order}")
     public String[][] getUsersList(@PathVariable String order) {
         SortOrdering sortby;
-
+        // TODO: add all sorts
         switch (order) {
             case "TIME_DESC":
                 sortby = SortOrdering.TIME_DESC;
