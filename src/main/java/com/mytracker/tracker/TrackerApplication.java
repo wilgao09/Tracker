@@ -9,7 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.mytracker.tracker")
+//@SpringBootApplicationi
 public class TrackerApplication {
 
 	public static void main(String[] args) {

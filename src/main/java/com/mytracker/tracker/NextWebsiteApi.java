@@ -10,6 +10,7 @@ import com.mytracker.tracker.NextWebsite.ApiSingleResponse;
 
 @RestController
 @CrossOrigin(origins = "https://tracker-dashboard.vercel.app", allowedHeaders = "*", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
 public class NextWebsiteApi {
 
     @GetMapping("/nextWebsite/data/agg")
@@ -20,7 +21,7 @@ public class NextWebsiteApi {
     @GetMapping("/nextWebsite/data/usersList/{order}")
     public String[][] getUsersList(@PathVariable String order) {
         SortOrdering sortby;
-
+        // TODO: add all sorts
         switch (order) {
             case "TIME_DESC":
                 sortby = SortOrdering.TIME_DESC;

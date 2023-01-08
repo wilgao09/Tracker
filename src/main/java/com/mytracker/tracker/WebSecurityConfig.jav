@@ -34,15 +34,17 @@ public class WebSecurityConfig {
     http
       .requiresChannel(channel -> 
           channel.anyRequest().requiresSecure())
-      .authorizeRequests(authorize ->
+      .authorizeHttpRequests(authorize ->
           authorize.anyRequest().permitAll());
+    return http.build();
 
 //	.authorizeHttpRequests((requests) -> requests
 //			.requestMatchers("/", "/home").permitAll()
 //			.anyRequest().authenticated()
 //			);
 
-    return http.build();
+    
+
 
 
       

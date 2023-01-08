@@ -40,3 +40,6 @@ out/
 .env
 mysql-connector-j-8.0.31.jar
 db/
+mariadb-java-client.jar
+nohup.out
+domain.pfx

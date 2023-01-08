@@ -39,16 +39,19 @@ public class NextWebsiteController {
             if (newId == -1) {
                 newId = 999;
             }
+	    var cookieval = Integer.toString(newId);
 
-            Cookie c = new Cookie("userid", Integer.toString(newId));
-            c.setHttpOnly(true);
-            c.setPath("/");
+//            Cookie c = new Cookie("userid", cookieval );
+//            c.setHttpOnly(true);
+//            c.setPath("/");
             // TODO: set secure
-            c.setMaxAge(2147483647);
-            c.setAttribute("Secure", "true");
-            c.setAttribute("SameSite", "None");
-
-            response.addCookie(c);
+//            c.setMaxAge(2147483647);
+            //c.setAttribute("Secure", "true");
+            //c.setAttribute("SameSite", "None");
+//	    c.setSecure(true);
+//	    c.setSameSite(true);
+//            response.addCookie(c);
+            response.setHeader("Set-Cookie", "userid="+cookieval+"; HttpOnly; SameSite=strict; Secure; Path=/");
             UUID = newId;
         }
 

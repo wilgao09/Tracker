@@ -1,6 +1,7 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.1'
+
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -18,8 +19,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.apache.httpcomponents.client5:httpclient5'
 	implementation files('mariadb-java-client.jar')
-	//implementation "org.springframework.security:spring-security-web"
-	//implementation "org.springframework.security:spring-security-config"
+//	implementation ("org.springframework.security:spring-security-web") 
+//	implementation ("org.springframework.security:spring-security-config") 
 
 
 //implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -31,4 +32,8 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:deprecation']
 }
