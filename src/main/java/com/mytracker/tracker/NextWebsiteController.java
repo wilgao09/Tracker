@@ -11,7 +11,6 @@ import com.mytracker.tracker.NextWebsite.VisitBody;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -22,42 +21,33 @@ public class NextWebsiteController {
     // @CrossOrigin(origins="https://next-website-wilgao09.vercel.app")
     @CrossOrigin(origins = remoteHost, allowedHeaders = "*", allowCredentials = "true")
     @PostMapping("/nextWebsite")
-    public int visitLocation(HttpServletRequest request,
+    public String visitLocation(HttpServletRequest request,
             HttpServletResponse response, @RequestBody VisitBody body,
             @CookieValue(value = "userid", defaultValue = "-1") String userid) {
         int UUID;
         try {
             UUID = Integer.parseInt(userid);
         } catch (NumberFormatException e) {
-            return 1;
+            return "failed";
         }
 
         System.out.println("user visited " + body.getLocation() + " and had a user id of " + UUID);
 
+        String cookieval = Integer.toString(UUID);
         if (UUID == -1) {
             int newId = NextWebsiteDB.createNextUser();
             if (newId == -1) {
                 newId = 999;
             }
-	    var cookieval = Integer.toString(newId);
+            cookieval = Integer.toString(newId);
 
-//            Cookie c = new Cookie("userid", cookieval );
-//            c.setHttpOnly(true);
-//            c.setPath("/");
-            // TODO: set secure
-//            c.setMaxAge(2147483647);
-            //c.setAttribute("Secure", "true");
-            //c.setAttribute("SameSite", "None");
-//	    c.setSecure(true);
-//	    c.setSameSite(true);
-//            response.addCookie(c);
-            response.setHeader("Set-Cookie", "userid="+cookieval+"; HttpOnly; SameSite=strict; Secure; Path=/");
+            response.setHeader("Set-Cookie", "userid=" + cookieval + "; HttpOnly; SameSite=strict; Secure; Path=/");
             UUID = newId;
         }
 
         NextWebsiteDB.createNextWebsiteVisit(UUID, body.getLocation());
 
-        return 5;
+        return cookieval;
     }
     /**
      * @CrossOrigin(origins="https://next-website-wilgao09.vercel.app")
