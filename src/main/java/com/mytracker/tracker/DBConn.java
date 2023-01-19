@@ -33,6 +33,7 @@ public class DBConn {
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/tracker?useSSL=false&serverRsaPublicKeyFile=/var/lib/mysql/public_key.pem", "tracker", "toor" );
             initialized = true;
+            System.out.println("Successfully connected to database");
         } catch (SQLException ex) {
             System.err.println("SQLException encountered while connecting to database");
             System.err.println(ex);

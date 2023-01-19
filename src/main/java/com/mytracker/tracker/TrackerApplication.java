@@ -17,7 +17,7 @@ public class TrackerApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-			System.out.println("???????? HELLO RUNNING A THING ?? ? ?? ? ? ?? ? ");
+			System.out.println("Server successfully booted");
 			DBConn.connect();
 
 		};

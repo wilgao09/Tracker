@@ -19,7 +19,7 @@ public class NextWebsiteController {
     private final String remoteHost = "https://next-website-wilgao09.vercel.app";
 
     // @CrossOrigin(origins="https://next-website-wilgao09.vercel.app")
-    @CrossOrigin(origins = remoteHost, allowedHeaders = "*", allowCredentials = "true")
+    // @CrossOrigin(origins = remoteHost, allowedHeaders = "*", allowCredentials = "true")
     @PostMapping("/nextWebsite")
     public String visitLocation(HttpServletRequest request,
             HttpServletResponse response, @RequestBody VisitBody body,
